@@ -1,0 +1,156 @@
+@import "@fontsource/noto-sans-jp/400.css";
+@import "@fontsource/noto-sans-jp/500.css";
+@import "@fontsource/noto-sans-jp/700.css";
+@import "@fontsource/noto-serif-jp/600.css";
+@import "@fontsource/noto-serif-jp/700.css";
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand tokens */
+  --color-washi: var(--washi);
+  --color-washi-deep: var(--washi-deep);
+  --color-sumi: var(--sumi);
+  --color-sumi-soft: var(--sumi-soft);
+  --color-shu: var(--shu);
+  --color-shu-dark: var(--shu-dark);
+  --color-line: var(--line);
+
+  --font-serif: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+  --font-sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  --font-hand: "Klee One", "Hiragino Maru Gothic ProN", cursive;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --washi: #f7f5f0;
+  --washi-deep: #efece4;
+  --sumi: #1c2b3a;
+  --sumi-soft: #4a5a6a;
+  --shu: #0e7490;
+  --shu-dark: #155e75;
+  --line: #dcd7cc;
+
+  --background: var(--washi);
+  --foreground: var(--sumi);
+  --card: #ffffff;
+  --card-foreground: var(--sumi);
+  --popover: #ffffff;
+  --popover-foreground: var(--sumi);
+  --primary: var(--shu);
+  --primary-foreground: #ffffff;
+  --secondary: var(--washi-deep);
+  --secondary-foreground: var(--sumi);
+  --muted: var(--washi-deep);
+  --muted-foreground: var(--sumi-soft);
+  --accent: var(--washi-deep);
+  --accent-foreground: var(--sumi);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--shu);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--washi);
+  color: var(--sumi);
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Japanese body text rhythm */
+.jp-body {
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+/* Eyebrow label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--shu);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+.eyebrow::before {
+  content: "";
+  display: block;
+  width: 1.75rem;
+  height: 1px;
+  background: var(--shu);
+}
+
+/* FDE体験の判子アニメーション（prefers-reduced-motion 時は motion-safe で無効化） */
+@keyframes stamp {
+  from {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
