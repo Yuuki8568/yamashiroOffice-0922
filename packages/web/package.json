@@ -7,6 +7,7 @@
   },
   "scripts": {
     "build": "tsc --noEmit && vite build",
+    "build:cloudflare": "tsc --noEmit -p tsconfig.cloudflare.json && vite build --config vite.cloudflare.config.ts",
     "dev": "vite",
     "start": "bun src/__server.ts",
     "typecheck": "tsc --noEmit",
@@ -24,7 +25,6 @@
     "@orpc/server": "^1.14.7",
     "@orpc/tanstack-query": "^1.14.7",
     "@radix-ui/react-slot": "^1.2.4",
-    "@runablehq/website-runtime": "^0.10.0",
     "@tanstack/react-query": "^5.100.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
