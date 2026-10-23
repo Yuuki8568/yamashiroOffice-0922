@@ -27,7 +27,7 @@ const DEMOS = [
     worry: "欠品や余剰在庫を減らしたい",
     name: "発注工房（AI発注デモ）",
     who: "小売店など、販売と在庫を見ながら発注する方",
-    experience: "天候・販促を考慮した発注候補、欠品・期限切れの確認、実績追加による予測更新",
+    experience: "スマホで商品を読む・棚卸を登録・発注案を確認。実績追加による予測更新を体験",
     adjust: "商品・仕入先の条件、POS連携、承認のルール",
     href: LINKS.orderWorkshop,
     internal: false,
