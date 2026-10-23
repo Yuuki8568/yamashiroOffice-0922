@@ -26,7 +26,7 @@ Runable解約・削除前に、上記2アプリを移すか公開終了するか
 
 ## ローカル確認
 
-Node.js 22以降とBun 1.3.14を使用します。
+Node.js 22以降とBun 1.4.4を使用します。
 
 ```bash
 bun install --frozen-lockfile
@@ -56,7 +56,7 @@ CloudflareのWorkers & PagesからGitHubリポジトリを接続し、次を設�
 | ルートディレクトリ | リポジトリルート（空欄または `/`） |
 | ビルドコマンド | `bun run build:cloudflare` |
 | デプロイコマンド | `bun run deploy:cloudflare` |
-| Bunのバージョン | `1.3.14`（必要ならビルド変数 `BUN_VERSION` に設定） |
+| Bunのバージョン | `1.4.4`（必要ならビルド変数 `BUN_VERSION` に設定） |
 | アプリ実行用シークレット | 不要 |
 
 依存インストールにはリポジトリの `bun.lock` を使用します。

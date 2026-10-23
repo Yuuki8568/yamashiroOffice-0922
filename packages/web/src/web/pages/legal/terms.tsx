@@ -1,3 +1,4 @@
+import { BUSINESS_TERMS } from "../../lib/business-terms";
 import {
   LegalLayout,
   LegalSection,
@@ -44,7 +45,7 @@ function Terms() {
           items={[
             "本サイトに掲載されたすべてのコンテンツの著作権その他の知的財産権は、当方または正当な権利を有する第三者に帰属します。",
             "本サイトの閲覧は、コンテンツの著作権等を移転するものではなく、私的使用の範囲を超える利用を許諾するものでもありません。",
-            "コンサルティング契約において別途定めた場合を除き、当方がコンサルティング業務の過程で開発・作成したツール・プロンプト・ドキュメント等の知的財産権は当方に帰属します。",
+            "有料サービスの成果物に係る知的財産権の帰属・利用許諾は、個別契約に定めます。",
           ]}
         />
       </LegalSection>
@@ -64,7 +65,7 @@ function Terms() {
           items={[
             "本サイトに掲載する情報は、完全性・正確性・最新性を保証するものではありません。",
             "当方が提供するコンサルティングサービスは、善管注意義務をもって遂行するものであり、特定の経営成果・業務改善効果を保証するものではありません。",
-            "AI生成物を含む成果物の最終的な正確性の確認責任は利用者に帰属します。",
+            "AI生成物を含む成果物は当方が確認・検証します。お客様にも利用場面に応じた確認をお願いしますが、これにより当方の契約上の提供義務・契約不適合への対応義務が免除されるものではありません。",
           ]}
         />
       </LegalSection>
@@ -88,7 +89,10 @@ function Terms() {
         />
       </LegalSection>
 
-      <LegalDates />
+      <LegalSection heading="事業者向けサービスの契約条件">
+        <LegalList items={[BUSINESS_TERMS.scope, BUSINESS_TERMS.ip, BUSINESS_TERMS.jurisdiction, BUSINESS_TERMS.performance, BUSINESS_TERMS.nda, BUSINESS_TERMS.priority, BUSINESS_TERMS.caseGate, BUSINESS_TERMS.existing]} />
+      </LegalSection>
+      <LegalDates revised="2026年10月23日" />
     </LegalLayout>
   );
 }
