@@ -24,12 +24,12 @@ const DEMOS = [
     internal: false,
   },
   {
-    worry: "問い合わせや案件の状況を整理したい",
-    name: "業務ツールデモスイート",
-    who: "問い合わせ・日報・見積の情報があちこちに散らばっている方",
-    experience: "3つのツールと、業種を切り替えると画面が変わる仕組み",
-    adjust: "管理したい項目と、業種に合わせた画面の内容",
-    href: LINKS.demoSuite,
+    worry: "欠品や余剰在庫を減らしたい",
+    name: "発注工房（AI発注デモ）",
+    who: "小売店など、販売と在庫を見ながら発注する方",
+    experience: "天候・販促を考慮した発注候補、欠品・期限切れの確認、実績追加による予測更新",
+    adjust: "商品・仕入先の条件、POS連携、承認のルール",
+    href: LINKS.orderWorkshop,
     internal: false,
   },
   {
@@ -61,7 +61,7 @@ export function DemoEntry() {
                 </h3>
                 <p className="mt-1 text-[0.78rem] font-bold tracking-wider text-shu">
                   {d.name}
-                  {!d.internal && d.href !== LINKS.shiftKobo && "（外部サイト）"}
+                  {!d.internal && d.href.startsWith("https://") && "（外部サイト）"}
                 </p>
                 <dl className="mt-4 space-y-2.5">
                   <div className="flex gap-3 text-[0.85rem]">
@@ -110,7 +110,7 @@ export function DemoEntry() {
                       </svg>
                     </a>
                   )}
-                  {!d.internal && d.href !== LINKS.shiftKobo && (
+                  {!d.internal && d.href.startsWith("https://") && (
                     <p className="mt-2 text-[0.72rem] text-sumi-soft">
                       外部サイトへ移動します
                     </p>

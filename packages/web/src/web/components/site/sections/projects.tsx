@@ -54,20 +54,20 @@ const PROJECTS = [
     link: { href: LINKS.shiftKobo, label: "シフト工房を試す（無料）", internal: true },
   },
   {
-    tags: ["商談用デモ", "業務ツール化"],
-    title: "業務ツールデモスイート",
-    subtitle: "Business Tools Demo Suite",
-    image: "/images/ss-demosuite.webp",
+    tags: ["商談用デモ", "小売・在庫管理"],
+    title: "発注工房 ── 実績から学ぶAI発注デモ",
+    subtitle: "Demand Forecast & Replenishment Demo",
+    image: "/images/ss-order-workshop.webp",
     before:
-      "「業務ツールを作ってもらうと、どんなものができるのか」がイメージしづらく、依頼のハードルが高い。",
+      "欠品を避けようと多く仕入れると、在庫や廃棄が増えてしまう。天候・販促・納期の変化も、担当者の経験だけで判断している。",
     after:
-      "問い合わせ管理・日報ダッシュボード・見積/請求の3ツールを1つのデモにまとめ、業種を切り替えると画面全体がその業種向けに変わる。完成イメージを見ながら相談できる。",
+      "販売実績と想定する天候・販促から需要を予測。在庫・入荷予定・期限・予算を見ながら発注候補を確認し、実績を追加して次の予測を更新できます。",
     meta: [
-      { label: "収録ツール", value: "問い合わせ管理／日報ダッシュボード／見積・請求" },
-      { label: "業種切替", value: "製造・建設設備・卸小売の3業種サンプル" },
-      { label: "位置づけ", value: "商談用のデモ。「こんな形で作れます」を体験いただくためのものです" },
+      { label: "体験内容", value: "架空の小売店・4商品。発注量の根拠、欠品・期限切れの試算、個別承認と実績記録" },
+      { label: "学習の確認", value: "曜日平均と要因を加えた統計モデルを比較。欠品・休業・未確認日は需要ゼロとして学習しません" },
+      { label: "位置づけ", value: "登録不要の初期デモ。外部データの自動取得や実発注は行いません。導入時はデータ連携と運用ルールを設計します" },
     ],
-    link: { href: LINKS.demoSuite, label: "デモスイートを試す（無料）", internal: false },
+    link: { href: LINKS.orderWorkshop, label: "AI発注デモを試す（無料）", internal: true },
   },
 ] as const;
 
