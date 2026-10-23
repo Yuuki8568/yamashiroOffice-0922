@@ -7,7 +7,7 @@ export const LINKS = {
     "https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%AF%E5%8C%BA%E5%8C%97%E9%9D%92%E5%B1%B11-3-3%20%E4%B8%89%E6%A9%8B%E3%83%93%E3%83%AB&hl=ja&z=16&output=embed",
   shindan: "https://ai-gyoumu-shindan.pages.dev/",
   demoSuite: "https://yamashi-itbomyl.runable.site/",
-  shiftKobo: "https://app-nah86it.runable.site/",
+  shiftKobo: "/demos/shift-workshop/",
   shop: "https://yamashirogyomukaizen.shop/",
   blog: "https://gyomu-ai.pro/",
 } as const;

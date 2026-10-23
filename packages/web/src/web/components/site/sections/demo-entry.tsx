@@ -17,8 +17,8 @@ const DEMOS = [
   {
     worry: "シフト作成を楽にしたい",
     name: "シフト工房",
-    who: "飲食・介護・小売など、シフト勤務の職場の管理者の方",
-    experience: "条件登録から1か月分の自動作成、手直しと勤務時間の集計",
+    who: "飲食・小売など、シフト勤務の職場の管理者の方",
+    experience: "希望・勤務条件からの自動作成、欠勤時の交代候補、実績からの必要人数予測",
     adjust: "各社の勤務体系と、希望休・人数などの条件",
     href: LINKS.shiftKobo,
     internal: false,
@@ -61,7 +61,7 @@ export function DemoEntry() {
                 </h3>
                 <p className="mt-1 text-[0.78rem] font-bold tracking-wider text-shu">
                   {d.name}
-                  {!d.internal && "（外部サイト）"}
+                  {!d.internal && d.href !== LINKS.shiftKobo && "（外部サイト）"}
                 </p>
                 <dl className="mt-4 space-y-2.5">
                   <div className="flex gap-3 text-[0.85rem]">
@@ -110,7 +110,7 @@ export function DemoEntry() {
                       </svg>
                     </a>
                   )}
-                  {!d.internal && (
+                  {!d.internal && d.href !== LINKS.shiftKobo && (
                     <p className="mt-2 text-[0.72rem] text-sumi-soft">
                       外部サイトへ移動します
                     </p>
