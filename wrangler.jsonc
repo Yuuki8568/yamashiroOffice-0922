@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "yamashiro-office",
+  "main": "packages/web/src/cloudflare.ts",
+  "compatibility_date": "2026-10-18",
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "./packages/web/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api", "/api/*"]
+  }
+}

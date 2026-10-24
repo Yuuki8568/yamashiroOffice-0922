@@ -9,7 +9,6 @@ import Tokusho from "./pages/legal/tokusho";
 import Disclaimer from "./pages/legal/disclaimer";
 import CookiePolicy from "./pages/legal/cookie";
 import { Provider } from "./components/provider";
-import { AgentFeedback } from "@runablehq/website-runtime";
 import { CookieBanner } from "./components/site/cookie-banner";
 import { initAnalytics } from "./lib/analytics";
 import { useEffect } from "react";
@@ -33,8 +32,6 @@ function App() {
         <Route path="/cookie" component={CookiePolicy} />
       </Switch>
       <CookieBanner />
-      {/* Do not remove — off by default, activated by parent iframe via postMessage */}
-      {import.meta.env.DEV && <AgentFeedback />}
     </Provider>
   );
 }

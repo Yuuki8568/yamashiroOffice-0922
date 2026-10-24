@@ -17,19 +17,19 @@ const DEMOS = [
   {
     worry: "シフト作成を楽にしたい",
     name: "シフト工房",
-    who: "飲食・介護・小売など、シフト勤務の職場の管理者の方",
-    experience: "条件登録から1か月分の自動作成、手直しと勤務時間の集計",
+    who: "飲食・小売など、シフト勤務の職場の管理者の方",
+    experience: "希望・勤務条件からの自動作成、欠勤時の交代候補、実績からの必要人数予測",
     adjust: "各社の勤務体系と、希望休・人数などの条件",
     href: LINKS.shiftKobo,
     internal: false,
   },
   {
-    worry: "問い合わせや案件の状況を整理したい",
-    name: "業務ツールデモスイート",
-    who: "問い合わせ・日報・見積の情報があちこちに散らばっている方",
-    experience: "3つのツールと、業種を切り替えると画面が変わる仕組み",
-    adjust: "管理したい項目と、業種に合わせた画面の内容",
-    href: LINKS.demoSuite,
+    worry: "欠品や余剰在庫を減らしたい",
+    name: "発注工房（AI発注デモ）",
+    who: "小売店など、販売と在庫を見ながら発注する方",
+    experience: "カメラ・写真で商品を読む、発注案を確認する、CSVで在庫・発注台帳を移行する流れを体験",
+    adjust: "商品・仕入先の条件、POSのデータ形式、承認・入荷確認のルール",
+    href: LINKS.orderWorkshop,
     internal: false,
   },
   {
@@ -61,7 +61,7 @@ export function DemoEntry() {
                 </h3>
                 <p className="mt-1 text-[0.78rem] font-bold tracking-wider text-shu">
                   {d.name}
-                  {!d.internal && "（外部サイト）"}
+                  {!d.internal && d.href.startsWith("https://") && "（外部サイト）"}
                 </p>
                 <dl className="mt-4 space-y-2.5">
                   <div className="flex gap-3 text-[0.85rem]">
@@ -110,7 +110,7 @@ export function DemoEntry() {
                       </svg>
                     </a>
                   )}
-                  {!d.internal && (
+                  {!d.internal && d.href.startsWith("https://") && (
                     <p className="mt-2 text-[0.72rem] text-sumi-soft">
                       外部サイトへ移動します
                     </p>

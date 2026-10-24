@@ -1,9 +1,9 @@
 {
   "name": "sandbox-app-template",
   "private": true,
-  "packageManager": "bun@1.3.14",
+  "packageManager": "bun@1.4.4",
   "workspaces": [
-    "packages/*"
+    "packages/web"
   ],
   "scripts": {
     "dev": "cd packages/web && bunx vite",
@@ -11,6 +11,11 @@
     "dev:mobile": "cd packages/mobile && bunx expo start --port 4300",
     "build": "turbo build",
     "build:web": "cd packages/web && bunx vite build",
+    "build:cloudflare": "bun run --cwd packages/web build:cloudflare",
+    "dev:cloudflare": "wrangler dev",
+    "deploy:cloudflare": "wrangler deploy",
+    "check:cloudflare": "wrangler deploy --dry-run",
+    "test:web": "bun test packages/web/src/web/lib/demo-logic.test.ts",
     "start": "pm2 startOrRestart ecosystem.config.cjs --update-env",
     "stop": "pm2 delete web-app 2>/dev/null || true",
     "kill:port": "bun run internal:kill-port",
@@ -33,6 +38,7 @@
     "semver": "^7.7.2",
     "turbo": "2.9.18",
     "typescript": "5.9.3",
+    "wrangler": "4.151.1",
     "zod": "^4.3.6"
   },
   "dependencies": {

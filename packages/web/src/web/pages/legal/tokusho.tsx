@@ -1,3 +1,4 @@
+import { BUSINESS_TERMS } from "../../lib/business-terms";
 import {
   LegalLayout,
   LegalSection,
@@ -11,7 +12,7 @@ function Tokusho() {
   return (
     <LegalLayout title="特定商取引法に基づく表記">
       <p className="jp-body text-[0.9rem] text-sumi-soft">
-        当方のサービスは事業者向け（BtoB）に提供しており、特定商取引法の適用対象外です。本ページは透明性確保のため任意に表示しています。
+        {BUSINESS_TERMS.scope}
       </p>
 
       <LegalSection heading="販売事業者">
@@ -57,7 +58,7 @@ function Tokusho() {
           rows={[
             [
               "価格",
-              "業務内容・範囲に応じて個別にお見積りし、契約前にご提示する金額にて確定します。当方は消費税法上の免税事業者であり、適格請求書発行事業者の登録をしていないため、適格請求書（インボイス）を発行できません。ご提示金額は消費税相当額を含まない金額とし、消費税相当額のお取り扱いは契約前に個別にご相談のうえ決定します。",
+              BUSINESS_TERMS.price,
             ],
             [
               "支払方法",
@@ -65,7 +66,7 @@ function Tokusho() {
             ],
             [
               "支払時期",
-              "契約締結後、請求書発行日から14日以内のお支払いをお願いします。なお、支払期日は成果物・役務の受領日から起算して60日以内かつできる限り短い期間内に設定します（中小受託取引適正化法の規律に沿った運用）。",
+              BUSINESS_TERMS.payment,
             ],
             ["追加料金", "振込手数料はお客様のご負担とします。"],
           ]}
@@ -73,35 +74,17 @@ function Tokusho() {
       </LegalSection>
 
       <LegalSection heading="役務提供時期">
-        <LegalTable
-          headers={["プラン", "提供開始時期"]}
-          rows={[
-            [
-              "AI業務診断ライト／スポット相談",
-              "ご入金確認後、7営業日以内に初回日程調整のご連絡をいたします",
-            ],
-            [
-              "業務改善設計（単発）／設計＋伴走",
-              "ご入金確認後、7営業日以内にキックオフ日程調整のご連絡をいたします",
-            ],
-            [
-              "集中伴走／定着サポート",
-              "契約書締結・ご入金確認後、7営業日以内にキックオフ日程調整のご連絡をいたします",
-            ],
-            [
-              "社内研修",
-              "契約書締結後、ご希望日程をもとに開催日を調整します",
-            ],
-          ]}
-        />
+        <p>{BUSINESS_TERMS.start}</p>
       </LegalSection>
 
       <LegalSection heading="返品・キャンセルポリシー">
         <LegalList
           items={[
-            "役務提供開始前のキャンセル：初回ミーティング実施前であれば、書面（メール可）によるキャンセル申し出により、お支払い済み金額を全額返金します（振込手数料は差し引きます）。",
-            "役務提供開始後のキャンセル：初回ミーティング実施後は、役務の性質上、原則として返金はお受けできません。ただし、当方の重大な過失により役務提供が不可能となった場合は、未提供部分に相当する金額を返金します。",
-            "デジタル制作物：ダウンロードまたは受領後は返品・返金をお受けできません。",
+            BUSINESS_TERMS.cancelBefore,
+            BUSINESS_TERMS.cancelAfter,
+            BUSINESS_TERMS.officeExit,
+            BUSINESS_TERMS.nextRefund,
+            BUSINESS_TERMS.refundTiming,
             "キャンセルのお申し出はメールにて承ります。",
           ]}
         />
@@ -127,7 +110,11 @@ function Tokusho() {
         />
       </LegalSection>
 
-      <LegalDates revised="2026年9月" />
+      <LegalSection heading="単発・月額の契約と更新">
+        <LegalList items={[BUSINESS_TERMS.renewal, BUSINESS_TERMS.notice, BUSINESS_TERMS.lateInvoice, BUSINESS_TERMS.feeDetails, BUSINESS_TERMS.performance]} />
+        <p>{BUSINESS_TERMS.existing}</p>
+      </LegalSection>
+      <LegalDates revised="2026年10月23日" />
     </LegalLayout>
   );
 }
