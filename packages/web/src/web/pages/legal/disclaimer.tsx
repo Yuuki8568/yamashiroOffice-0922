@@ -73,7 +73,7 @@ function Disclaimer() {
       <p>{BUSINESS_TERMS.performance}</p>
       <p>{BUSINESS_TERMS.officeExit}</p>
       <p>{BUSINESS_TERMS.existing}</p>
-      <LegalDates revised="2026年10月23日" />
+      <LegalDates revised="2026年10月24日" />
     </LegalLayout>
   );
 }

@@ -24,6 +24,10 @@ describe("approved business terms", () => {
     expect(BUSINESS_TERMS.priority).not.toContain("秘密保持違反の上限例外");
     expect(BUSINESS_TERMS.capExceptions).toContain("個別上限を合意するまで");
     expect(BUSINESS_TERMS.capExceptions).toContain("損害範囲の制限を適用しません");
+    expect(BUSINESS_TERMS.capExceptions).toContain("この通常の賠償上限の内側に含めます");
+    expect(BUSINESS_TERMS.capExceptions).toContain("現実に発生した直接かつ通常の損害");
+    expect(BUSINESS_TERMS.capExceptions).toContain("個別の賠償上限額・合意文書ID・合意日");
+    expect(BUSINESS_TERMS.capExceptions).toContain("確認・合意するまでNDAを確定しません");
   });
   test("A-D preserves incomplete operational facts and agreed safeguards", () => {
     expect(BUSINESS_TERMS.notice).toContain("到達時");
@@ -54,6 +58,21 @@ describe("approved business terms", () => {
       expect(html).toContain(answer);
       expect(faq).toContain(answer);
     }
+  });
+  test("maintenance distinguishes agreed free cure from extra changes, including structured FAQ", () => {
+    for (const path of ["../../../index.html", "../components/site/sections/faq.tsx", "../pages/service.tsx"]) {
+      const source = read(path);
+      expect(source).toContain("契約不適合に対する無償是正は、合意済みの契約条件に従って対応");
+      expect(source).toContain("追加の保守・変更とは区別します");
+      expect(source).not.toContain("納品後の保守・修正は、");
+    }
+  });
+  test("email contact does not promise no external storage", () => {
+    const contact = read("../components/site/sections/contact.tsx");
+    expect(contact).not.toContain("送信内容は外部に記録されません");
+    expect(contact).toContain("サイト独自の問い合わせフォームに内容を保存・送信するものではありません");
+    expect(contact).toContain("Google Workspaceで受信・管理");
+    expect(read("../pages/legal/privacy.tsx")).toContain("Google LLC（Google Workspace）");
   });
   test("invoice identity, existing contracts, public address and demo privacy preserved", () => {
     expect(read("./links.ts")).toContain("T3810986792894");
