@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { BUSINESS_TERMS } from "../lib/business-terms";
 import { SiteHeader } from "../components/site/header";
 import { SiteFooter } from "../components/site/footer";
 import { MobileCta } from "../components/site/mobile-cta";
@@ -54,6 +55,10 @@ const TIERS = [
 ] as const;
 
 const BOUNDARIES = [
+  {
+    label: "お受けしない業務・事前確認",
+    body: BUSINESS_TERMS.serviceExclusions,
+  },
   {
     label: "無料の範囲",
     body: "初回相談（45分）と、条件確認・見積の提示まで。相談のみでも構いません。",

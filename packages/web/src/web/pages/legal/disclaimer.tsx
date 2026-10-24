@@ -70,6 +70,14 @@ function Disclaimer() {
         </p>
       </LegalSection>
 
+      <LegalSection heading="第7条 提供対象外の業務と法令上の確認">
+        <p>{BUSINESS_TERMS.serviceExclusions}</p>
+        <p className="mt-3">{BUSINESS_TERMS.reservedServicesLaw}</p>
+        <p className="mt-3">
+          参考資料：<a className="underline" href="https://www.maff.go.jp/j/kokusai/boueki/attach/pdf/triff-29.pdf" target="_blank" rel="noopener noreferrer">総務省「行政書士法の一部を改正する法律の公布について（通知）」・改正後条文（2026年1月1日施行、農林水産省掲載PDF）</a>
+        </p>
+      </LegalSection>
+
       <p>{BUSINESS_TERMS.performance}</p>
       <p>{BUSINESS_TERMS.officeExit}</p>
       <p>{BUSINESS_TERMS.existing}</p>

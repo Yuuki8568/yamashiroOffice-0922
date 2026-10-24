@@ -1,3 +1,4 @@
+import { BUSINESS_TERMS } from "../../../lib/business-terms";
 import { Reveal } from "../reveal";
 import { LINKS, OFFICE } from "../../../lib/links";
 import { trackEvent } from "../../../lib/analytics";
@@ -50,6 +51,9 @@ export function Contact() {
             <p className="jp-body mt-4 text-[0.8rem] leading-relaxed text-white/60">
               初回相談で、ツールの完成をお約束するものではありません。
               具体的な設計・制作は、内容と費用に合意してから進めます。
+            </p>
+            <p className="jp-body mt-4 text-left text-[0.8rem] leading-relaxed text-white/70">
+              {BUSINESS_TERMS.serviceExclusions}
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
