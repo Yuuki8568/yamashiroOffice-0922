@@ -68,7 +68,7 @@ export function reconcile(
     [...orderIdCount].filter(([, c]) => c > 1).map(([id]) => id),
   );
 
-  const usableOrders: OrderRow[] = [];
+  const usableOrders: (OrderRow & { amount: number })[] = [];
   const heldOrderIds = new Set<string>();
   for (const o of orders) {
     if (!o.id || o.id.trim() === "") continue;
@@ -85,7 +85,7 @@ export function reconcile(
       });
       continue;
     }
-    usableOrders.push(o);
+    usableOrders.push({ ...o, amount: o.amount });
   }
   for (const id of dupOrderIds) {
     holds.push({
@@ -109,7 +109,7 @@ export function reconcile(
   );
 
   const usableOrderIds = new Set(usableOrders.map((o) => o.id));
-  const compById = new Map<string, CompletionRow>();
+  const compById = new Map<string, CompletionRow & { amount: number }>();
   const heldCompIds = new Set<string>();
   const orderIdsWithHeldCompletion = new Set<string>();
   const holdCompletion = (c: CompletionRow, reason: string) => {
@@ -139,7 +139,7 @@ export function reconcile(
       });
       continue;
     }
-    compById.set(c.id, c);
+    compById.set(c.id, { ...c, amount: c.amount });
   }
 
   // 照合

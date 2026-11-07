@@ -1,6 +1,6 @@
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
-import { LINKS, OFFICE } from "../../../lib/links";
+import { OFFICE } from "../../../lib/links";
 
 const PRINCIPLES = [
   "「AIを導入したい」でも「何から始めればいいか分からない」という経営者の声を起点にしています。",

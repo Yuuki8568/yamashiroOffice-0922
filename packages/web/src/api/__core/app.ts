@@ -1,5 +1,4 @@
 import { Hono } from "hono";
-import { cors } from "hono/cors";
 import { os, type Router } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
 
@@ -25,16 +24,11 @@ export interface RpcContext {
 /** Base procedure builder — chain .input()/.use()/.handler() off this. */
 export const base = os.$context<RpcContext>();
 
-/** Assembles the HTTP mount: CORS → /api/health → oRPC procedures at /api/rpc/*. */
+/** Same-origin HTTP mount: /api/health and oRPC procedures at /api/rpc/*. */
 export function createApp(router: Router<Record<never, never>, RpcContext>) {
-  const app = new Hono().use(
-    cors({
-      origin: (origin) => origin ?? "*",
-      credentials: true,
-      // Required so the browser can read the bearer token header set by Better Auth.
-      exposeHeaders: ["set-auth-token"],
-    }),
-  );
+  // The website and its API share an origin. Do not reflect arbitrary Origins
+  // or grant credentialed cross-origin access, including on preview hosts.
+  const app = new Hono();
 
   app.get("/api/health", (c) => c.json({ status: "ok" }, 200));
 

@@ -1,3 +1,4 @@
+import { BUSINESS_TERMS } from "../../../lib/business-terms";
 import { Reveal } from "../reveal";
 import { LINKS, OFFICE } from "../../../lib/links";
 import { trackEvent } from "../../../lib/analytics";
@@ -50,6 +51,9 @@ export function Contact() {
             <p className="jp-body mt-4 text-[0.8rem] leading-relaxed text-white/60">
               初回相談で、ツールの完成をお約束するものではありません。
               具体的な設計・制作は、内容と費用に合意してから進めます。
+            </p>
+            <p className="jp-body mt-4 text-left text-[0.8rem] leading-relaxed text-white/70">
+              {BUSINESS_TERMS.serviceExclusions}
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
@@ -113,7 +117,7 @@ export function Contact() {
                   この3点をメールで送る
                 </a>
                 <p className="mt-3 text-[0.75rem] leading-relaxed text-white/50">
-                  お使いのメールソフトが開きます。フォームではなくメールでのやり取りのため、送信内容は外部に記録されません。
+                  お使いのメールソフトが開きます。このボタンはサイト独自の問い合わせフォームに内容を保存・送信するものではありません。送信されたメールはGoogle Workspaceで受信・管理します。個人情報の取扱いはプライバシーポリシーをご確認ください。
                 </p>
               </div>
             </div>

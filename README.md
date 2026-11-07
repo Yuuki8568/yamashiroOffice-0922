@@ -1,4 +1,22 @@
-# sandbox-app-template
+# 山代業務改善事務所サイト
+
+## Cloudflareでの独立運用
+
+[移行・公開手順](docs/cloudflare-migration.md)を参照してください。
+
+```bash
+bun install --frozen-lockfile
+bun run build:cloudflare
+bun run test:web
+bun run check:cloudflare
+bun run deploy:cloudflare
+```
+
+Cloudflare向けのインストール・ビルド対象は `packages/web` のみです。
+以下は元のRunableテンプレートの参考情報です。desktop/mobileの雛形は保存していますが、
+独立運用ではインストール・ビルド・公開しません。
+
+## 旧テンプレート資料
 
 Monorepo: Bun workspaces + Turborepo.
 

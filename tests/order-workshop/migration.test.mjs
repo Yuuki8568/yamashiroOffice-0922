@@ -1,0 +1,14 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import * as M from '../../packages/web/public/demos/order-workshop/migration.js';
+import * as W from '../../packages/web/public/demos/order-workshop/workflow.js';
+import * as C from '../../packages/web/public/demos/order-workshop/core.js';
+const initial=()=>W.upgrade(C.preset());
+const load=(s,kind,text=M.sample(kind))=>{const t=M.parseCSV(text);return M.preview(s,t,kind,M.guess(t.headers,kind));};
+test('CSV quotes, BOM, multiline, separators',()=>{assert.deepEqual(M.parseCSV('\uFEFFa,b\r\n"x,y","z""q"\r\n').rows,[['x,y','z"q']]);assert.deepEqual(M.parseCSV('a\tb\n"x\ny"\tz','\t').rows,[['x\ny','z']]);assert.throws(()=>M.parseCSV('a,a\n1,2'));assert.throws(()=>M.parseCSV('a,b\n1'));assert.throws(()=>M.parseCSV('a,b\n"oops,2'));});
+test('product sample registers atomically, repeated import skips',()=>{const s=initial(),p=load(s,'products');assert.equal(p.errors,0);assert.equal(p.added,1);const n=M.apply(s,p);assert.equal(s.products.length,4);assert.equal(n.products.length,5);assert.equal(n.products.at(-1).history.length,0);assert.equal(load(n,'products').skipped,1);C.validateSaved(n);});
+test('conflicting product and duplicate rows prevent whole import',()=>{const s=initial(),text=M.sample('products');assert.equal(load(s,'products',text+text.split('\r\n')[1]+'\r\n').errors,1);const n=M.apply(s,load(s,'products'));assert.equal(load(n,'products',text.replace(',120,6',',130,6')).errors,1);});
+test('sales imports without touching stock, date, orders; duplicate idempotent',()=>{const s=initial(),n=M.apply(s,load(s,'products')),p=load(n,'sales');assert.equal(p.errors,0);assert.equal(p.excluded,0);const a=M.apply(n,p);assert.equal(a.today,n.today);assert.deepEqual(a.orders,n.orders);assert.deepEqual(a.products.at(-1).lots,[]);assert.equal(load(a,'sales').skipped,1);C.validateSaved(a);});
+test('unknown conditions stored but excluded from learning',()=>{const s=initial(),n=M.apply(s,load(s,'products')),p=load(n,'sales','barcode,date,sales\n2000000000053,2026/1/1,10');assert.equal(p.excluded,1);assert.equal(p.state.products.at(-1).history[0].missing,true);});
+test('bad dates, unknown SKU, negatives, duplicates blocked',()=>{const s=initial(),n=M.apply(s,load(s,'products'));for(const text of ['2000000000053,2026-02-30,5','2000000000053,2099-01-01,5','2000000000053,2026-01-01,-1','2000000000060,2026-01-01,5'])assert.equal(load(n,'sales','barcode,date,sales\n'+text).errors,1);assert.equal(load(s,'sales').errors,1);});
+test('state changed after preview requires recheck',()=>{const s=initial(),p=load(s,'products');s.scenario.budget++;assert.throws(()=>M.apply(s,p),/変わり/);});
+test('CSV containing markup remains data, never formulas evaluated',()=>{const p=load(initial(),'products',M.sample('products').replace('サンプル商品','<img src=x>'));assert.equal(p.errors,0);assert.equal(p.state.products.at(-1).name,'<img src=x>');});

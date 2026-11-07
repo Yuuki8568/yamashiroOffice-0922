@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {startCamera,stopCamera} from '../../packages/web/public/demos/order-workshop/scanner.js';
+const fakeVideo=()=>({pause(){},play:async()=>{},setAttribute(){},readyState:0});
+async function env(media,fn){const old=Object.getOwnPropertyDescriptor(globalThis,'navigator');globalThis.window={isSecureContext:true};Object.defineProperty(globalThis,'navigator',{configurable:true,value:{mediaDevices:media}});try{await fn();}finally{stopCamera();if(old)Object.defineProperty(globalThis,'navigator',old);else delete globalThis.navigator;delete globalThis.window;}}
+test('permission denial returns actionable error',async()=>{await env({getUserMedia:async()=>{throw new DOMException('denied','NotAllowedError');}},async()=>{await assert.rejects(startCamera(fakeVideo(),()=>{}),/許可/);});});
+test('late permission resolution after cancellation stops every track',async()=>{let release,stops=0;await env({getUserMedia:()=>new Promise(r=>release=r)},async()=>{const p=startCamera(fakeVideo(),()=>assert.fail('must not read'));stopCamera();release({getTracks:()=>[{stop:()=>stops++}]});await p;assert.equal(stops,1);});});
+test('playback failure releases stream and preserves readable error',async()=>{let stops=0;await env({getUserMedia:async()=>({getTracks:()=>[{stop:()=>stops++}]})},async()=>{const v=fakeVideo();v.play=async()=>{throw Error('playback blocked');};await assert.rejects(startCamera(v,()=>{}),/playback blocked/);assert.equal(stops,1);assert.equal(v.srcObject,null);});});
