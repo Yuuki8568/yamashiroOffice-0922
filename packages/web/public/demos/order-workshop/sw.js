@@ -1,5 +1,5 @@
 // The cache is limited to this demo. No background order submission.
-const CACHE='order-workshop-mobile-v3';
+const CACHE='order-workshop-mobile-v4';
 const FILES=['./','index.html','app.html','preview.css','preview.js','migration.js','operations-import.js','migration-guide.html','import-ui.js','app.js','core.js','workflow.js','scanner.js','scan-logic.js','scanner-lib.js','style.css','manifest.webmanifest','icon-192.png','icon-512.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('order-workshop-mobile-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
