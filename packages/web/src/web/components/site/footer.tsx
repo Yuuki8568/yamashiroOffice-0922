@@ -66,9 +66,16 @@ export function SiteFooter() {
                 loading="lazy"
                 className="h-10 w-auto"
               />
-              <p className="text-[0.72rem] leading-snug text-sumi-soft">
-                生成AIパスポート試験 合格
-              </p>
+              <div className="min-w-0 text-[0.72rem] leading-snug text-sumi-soft">
+                <p>
+                  <span className="inline-block">GUGA 生成AIパスポート</span>{" "}
+                  <span className="inline-block">2026年10月 資格取得</span>
+                </p>
+                <p lang="en" className="mt-1">
+                  GUGA Generative AI Passport,{" "}
+                  <span className="inline-block">Oct 2026 Certified</span>
+                </p>
+              </div>
             </div>
           </div>
 

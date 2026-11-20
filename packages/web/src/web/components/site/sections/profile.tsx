@@ -62,7 +62,12 @@ export function Profile() {
                   className="mx-auto h-20 w-auto"
                 />
                 <p className="mt-3 text-[0.8rem] font-bold text-sumi">
-                  生成AIパスポート試験 合格
+                  <span className="inline-block">GUGA 生成AIパスポート</span>{" "}
+                  <span className="inline-block">2026年10月 資格取得</span>
+                </p>
+                <p lang="en" className="mt-1 text-[0.75rem] leading-snug text-sumi-soft">
+                  GUGA Generative AI Passport,{" "}
+                  <span className="inline-block">Oct 2026 Certified</span>
                 </p>
                 <p className="mt-1 text-[0.68rem] text-sumi-soft">
                   一般社団法人生成AI活用普及協会（GUGA）主催
