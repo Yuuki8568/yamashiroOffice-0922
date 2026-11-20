@@ -1,6 +1,7 @@
+import { ExternalLink } from "lucide-react";
 import { Reveal } from "../reveal";
 import { SectionHeading } from "../section-heading";
-import { OFFICE } from "../../../lib/links";
+import { LINKS, OFFICE } from "../../../lib/links";
 
 const PRINCIPLES = [
   "「AIを導入したい」でも「何から始めればいいか分からない」という経営者の声を起点にしています。",
@@ -73,6 +74,16 @@ export function Profile() {
                   一般社団法人生成AI活用普及協会（GUGA）主催
                 </p>
               </div>
+              <a
+                href={LINKS.openBadgeProfile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 inline-flex min-h-11 items-center gap-1.5 rounded-sm text-[0.8rem] font-bold text-shu underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                オープンバッジの公開プロフィール
+                <ExternalLink size={14} aria-hidden="true" className="shrink-0" />
+                <span className="sr-only">（新しいタブで開きます）</span>
+              </a>
               <div className="mt-3 rounded-md border border-shu/25 bg-shu/5 px-3 py-2.5">
                 <p className="text-[0.75rem] font-bold text-shu">
                   Google提供のAI講座 修了証4件

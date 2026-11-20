@@ -1,6 +1,8 @@
 export const LINKS = {
   booking: "https://calendar.app.google/EmoGevH38APT6JUw8",
   email: "info@yamashirogyomukaizen.com",
+  openBadgeProfile:
+    "https://wallet.openbadge.net/public/user/a0d7c78e-da5e-4cdd-82ff-712e35686d56",
   googleMaps:
     "https://www.google.com/maps/place/%E5%B1%B1%E4%BB%A3%E6%A5%AD%E5%8B%99%E6%94%B9%E5%96%84%E4%BA%8B%E5%8B%99%E6%89%80/data=!4m2!3m1!1s0x23b896b44845f209:0xd3d1e1a4937f7de7",
   googleMapsEmbed:
