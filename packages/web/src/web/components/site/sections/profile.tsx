@@ -52,6 +52,22 @@ export function Profile() {
                   一般社団法人ディープラーニング協会 主催
                 </p>
               </div>
+              <div className="mt-3 rounded-md border border-line bg-white px-4 py-5">
+                <img
+                  src="/images/generative-ai-passport.png"
+                  alt=""
+                  width={374}
+                  height={384}
+                  loading="lazy"
+                  className="mx-auto h-20 w-auto"
+                />
+                <p className="mt-3 text-[0.8rem] font-bold text-sumi">
+                  生成AIパスポート試験 合格
+                </p>
+                <p className="mt-1 text-[0.68rem] text-sumi-soft">
+                  一般社団法人生成AI活用普及協会（GUGA）主催
+                </p>
+              </div>
               <div className="mt-3 rounded-md border border-shu/25 bg-shu/5 px-3 py-2.5">
                 <p className="text-[0.75rem] font-bold text-shu">
                   Google提供のAI講座 修了証4件

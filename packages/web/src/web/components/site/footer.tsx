@@ -57,6 +57,19 @@ export function SiteFooter() {
                 2026#5 合格
               </p>
             </div>
+            <div className="mt-3 flex items-center gap-5">
+              <img
+                src="/images/generative-ai-passport.png"
+                alt=""
+                width={374}
+                height={384}
+                loading="lazy"
+                className="h-10 w-auto"
+              />
+              <p className="text-[0.72rem] leading-snug text-sumi-soft">
+                生成AIパスポート試験 合格
+              </p>
+            </div>
           </div>
 
           <nav aria-label="フッターナビゲーション">
