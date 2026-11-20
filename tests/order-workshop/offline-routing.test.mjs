@@ -74,6 +74,14 @@ test('empty cache returns a controlled unavailable response, never undefined', a
   const h = harness(); h.setOffline(); const { response } = await h.request('app?view=scan');
   assert(response instanceof Response); assert.equal(response.status, 503);
 });
+test('the practice barcode opens offline without a previous visit to the image', async () => {
+  const h = harness();
+  await h.lifecycle('install');
+  h.setOffline();
+  const { response } = await h.request('sample-barcode.png');
+  assert.equal(response.status, 200);
+  assert.equal(await response.text(), 'ASSET');
+});
 test('unknown offline navigation does not become the preview iframe wrapper', async () => {
   const h = harness(); await h.lifecycle('install'); h.setOffline();
   const { response } = await h.request('missing-page'); assert.equal(response.status, 503);

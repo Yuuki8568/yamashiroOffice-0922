@@ -1,6 +1,6 @@
 // The cache is limited to this demo. No background order submission.
-const CACHE='order-workshop-mobile-v5';
-const FILES=['./','index.html','app.html','preview.css','preview.js','migration.js','operations-import.js','migration-guide.html','import-ui.js','app.js','core.js','workflow.js','scanner.js','scan-logic.js','scanner-lib.js','style.css','manifest.webmanifest','icon-192.png','icon-512.png'];
+const CACHE='order-workshop-mobile-v6';
+const FILES=['./','index.html','app.html','preview.css','preview.js','migration.js','operations-import.js','migration-guide.html','import-ui.js','app.js','core.js','workflow.js','scanner.js','scan-logic.js','scanner-lib.js','sample-barcode.png','style.css','manifest.webmanifest','icon-192.png','icon-512.png'];
 // Only known static documents may ignore the view query when offline.
 // Cloudflare canonical URLs omit .html; keep each document's identity intact.
 const OFFLINE_DOCUMENTS=new Map([
