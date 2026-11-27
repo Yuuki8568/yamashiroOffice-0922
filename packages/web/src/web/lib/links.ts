@@ -11,7 +11,7 @@ export const LINKS = {
   orderWorkshop: "/demos/order-workshop/",
   shiftKobo: "/demos/shift-workshop/",
   shop: "https://yamashirogyomukaizen.shop/",
-  blog: "https://gyomu-ai.pro/",
+  blog: "https://aeo.yamashirogyomukaizen.com/",
 } as const;
 
 export const OFFICE = {
