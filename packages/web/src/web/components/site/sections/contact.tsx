@@ -163,17 +163,30 @@ export function Contact() {
                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
-                  Googleマップで開く
+                  Googleマップでプロフィールを見る
                 </a>
               </div>
-              <div className="overflow-hidden rounded-lg border border-white/15 shadow-sm">
+              <div className="relative overflow-hidden rounded-lg border border-white/15 shadow-sm focus-within:ring-2 focus-within:ring-white/75">
                 <iframe
-                  title={`${OFFICE.name}の地図`}
+                  title="青山一丁目周辺の地図"
+                  aria-hidden="true"
+                  tabIndex={-1}
                   src={LINKS.googleMapsEmbed}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="h-[280px] w-full border-0 sm:h-[320px]"
+                  className="pointer-events-none block h-[280px] w-full border-0 sm:h-[320px]"
                 />
+                <a
+                  href={LINKS.googleMaps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent("cta_maps", { location: "contact_map" })
+                  }
+                  className="block border-t border-white/15 px-4 py-3 text-center text-sm font-bold text-white/85 after:absolute after:inset-0 hover:bg-white/10 focus-visible:bg-white/10 focus-visible:underline"
+                >
+                  周辺地図から事務所のプロフィールを開く
+                </a>
               </div>
             </div>
           </div>
